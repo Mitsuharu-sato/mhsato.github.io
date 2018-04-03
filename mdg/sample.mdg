@@ -1,0 +1,330 @@
+// 最下部に簡単な説明あり
+//
+// additional part
+// 丸でmark
+[title] <4,1.5>
+#Glycerolipid Metabolome
+de novo pathway of glycerophospholipid
+
+//Glycerol-3-phosphate acyltransferase
+g[GPAM]
+?[link](http://www.genome.jp/dbget-bin/www_bget?ec:2.3.1.15" GPAT(2.3.1.15)")
+![image](img/mit.png)
+
+<pop>
+==================================
+Protein
+?[link](http://www.uniprot.org/uniprot/Q9HCL2"Glycerol-3-phosphate acyltransferase 1")
+![image](img/mit.png) 
+
+
+?[link](http://www.uniprot.org/uniprot/Q6NUI2"Glycerol-3-phosphate acyltransferase 2")
+![image](img/mit.png)
+?[link](http://www.uniprot.org/uniprot/Q53EU6"Glycerol-3-phosphate acyltransferase 3")
+![image](img/ER.png)
+?[link](http://www.uniprot.org/uniprot/Q86UL3"Glycerol-3-phosphate acyltransferase 4")
+![image](img/ER.png)
+
+
+<br>
+gene
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=627424&TAXID=9823&SEARCH=GPAT"GPAT1")
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=193514&TAXID=9606&SEARCH=gpat2"GPAT2")
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=142612&TAXID=9606&SEARCH=1-acylglycerol-3-phosphate%20O-acyltransferase="GPAT3(AGPAT9)*")
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=195224&TAXID=9606&SEARCH=1-acylglycerol-3-phosphate%20O-acyltransferase"GPAT4(AGPAT6)*")
+<br>
+Description
+*According to the HUGO Gene Nomenclature Committee (HGNC), AGPAT9 and AGPAT6 are the previous names of GPAT3 and GPAT4 respectively.
+?[link](https://www.genenames.org/cgi-bin/genefamilies/set/46"HGNC")
+</pop>
+
+
+
+//glycerol-3-phosphate
+[G3P] <11,8>
+!GL{OH |OH|O-PO_s3s_}
+?[link](http://lipidbank.jp/cgi-bin/main.cgi?id=PGP "G3P")
+<pop>
+![image](img/G3P.png)
+glycerol-3-phosphate
+</pop>
+d=[GPAM](l_w3)=>u[LPA]
+
+//lysophosphatidic acid
+[LPA] <10,21.5>
+!GL{O-CO-R1|OH|O-PO_s3s_}
+LPA
+<pop>
+![image](img/LPA.png)
+lysophosphatidic acid
+
+</pop>
+d=[AGPAT](l_w3)=>u[PA]
+
+
+//phosphatidic acid
+[PA] <10,32>
+!GL{O-CO-R1|O-CO-R1|O-PO_s3s_}
+?[link](http://jcbl.jp/wiki/Volatile:ListMol?my_1=LBGPA"PA")
+d=[LPIN](l_w3)=>u[DAG]
+r=[CDS1](l_w3)=>l[CDP-DAG]
+
+//diacylglycerol
+[DAG] <10,47>
+!GL{O-CO-R1|O-CO-R1| OH}
+DAG
+=[CHPT1](l_w3)=>[PC]
+=[CEPT1SELENOI](l_w3)=>[PE]
+
+//cytidine diphosphate-diacylglycerol
+[CDP-DAG] <30.5,32.5>
+!GL{O-CO-R1 | O-CO-R2 | O-PO2-CMP</t>}
+CDP-DAG
+u=[PGS1](l_w3)=>d[PGP]
+r=[CDIPT](l_w3)=>[PI]
+
+
+//phosphatidylglycerol-phosphate
+[PGP] <29.5,9.5>
+!PG{O-CO-R1 | O-CO-R2 | O-PO2-O| HO|O3P-O}
+PGP
+=[PTPMT1] (l_w3)=>[PG]
+
+//phosphatidylglycerol
+[PG] <51,9.5>
+!PG{O-CO-R1 | O-CO-R2 | PO2-O| HO|HO }
+?[link](http://jcbl.jp/wiki/Volatile:ListMol?my_1=LBGPG"PG")
+=[CRLS1](l_w3)=>[CL]
+
+//phosphatidylinositol
+[PI] <51,32>
+!GL{O-CO-R1 | O-CO-R2 | O-PO2-Inositol}
+?[link](http://jcbl.jp/wiki/Volatile:ListMol?my_1=LBGPI"PI")
+
+//cardiolipin
+[CL] <72.5,8>
+!CL{O-CO-R1|O-CO-R2|O-PO-O|HO|O-PO-O|O-CO-R3| O-CO-R4}
+CL
+
+//phosphatidylcholine
+[PC] <29,39.5>
+!GL{O-CO-R1|O-CO-R1|O-PO2-Choline}
+?[link](http://jcbl.jp/wiki/Volatile:ListMol?my_1=LBGPC"PC")
+
+d=[PTDSS](l_w3)=>u[PS]
+
+
+//phosphatidylethanolamine
+[PE] <27.5,63.5>
+!GL{O-CO-R1|O-CO-R1| O-PO2-Ethanolamine}
+?[link](http://jcbl.jp/wiki/Volatile:ListMol?my_1=LBGPE "PE")
+u=[PTDSS]l(l_w3)=>d[PS]
+
+//phosphatidylserine
+[PS] <29,51>
+!GL{O-CO-R1|O-CO-R1| O-PO2-Serine}
+?[link](http://jcbl.jp/wiki/Volatile:ListMol?my_1=LBGPS "PS")
+
+d=[PISD]r(l_w3)=>u[PE]
+
+ 
+
+
+//1-acylglycerol-3-phosphate O-acyltransferase 
+g[AGPAT]
+?[link](http://www.genome.jp/dbget-bin/www_bget?ec:2.3.1.51"AGPAT(2.3.1.51)")
+<pop>
+======================================
+Protein
+?[link](http://www.uniprot.org/uniprot/Q99943"1-acylglycerol-3-phosphate O-acyltransferase 1")
+![image](img/ER.png)
+?[link](http://www.uniprot.org/uniprot/A0A024R8F9"1-acylglycerol-3-phosphate O-acyltransferase 2")
+?[link](http://www.uniprot.org/uniprot/Q8TEB0"1-acylglycerol-3-phosphate O-acyltransferase 3")
+?[link](http://www.uniprot.org/uniprot/Q9NRZ5"1-acylglycerol-3-phosphate O-acyltransferase 4")
+?[link](http://www.uniprot.org/uniprot/Q9NUQ2"1-acylglycerol-3-phosphate O-acyltransferase 5")
+![image](img/mit.png) ![image](img/ER.png)
+![image]![image]
+<br>
+Gene
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=221267&TAXID=9606&SEARCH=1-acylglycerol-3-phosphate%20O-acyltransferase"AGPAT1")
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=186410&TAXID=9606&SEARCH=1-acylglycerol-3-phosphate%20O-acyltransferase"AGPAT2")
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=169185&TAXID=9606&SEARCH=1-acylglycerol-3-phosphate"AGPAT3")
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=194533&TAXID=9606&SEARCH=1-acylglycerol-3-phosphate"AGPAT4")
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=2093013&TAXID=9606&SEARCH=1-acylglycerol-3-phosphate%205"AGPAT5")
+
+
+</pop>
+
+//CDP-diacylglycerol synthase
+g[CDS1]
+?[link](http://www.genome.jp/dbget-bin/www_bget?ec:2.7.7.41"CDS(2.7.7.41)")
+<pop>
+===============================
+Protein
+?[link](http://www.uniprot.org/uniprot/Q92903"CDP-diacylglycerol synthase 1")
+?[link](http://www.uniprot.org/uniprot/O95674"CDP-diacylglycerol synthase 2")
+<br>
+Gene
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=2724217&TAXID=9606&SEARCH=CDP-diacylglycerol%20synthase%201"CDS1")
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=147505&TAXID=9606&SEARCH=CDP-diacylglycerol%20synthase%202"CDS2")
+
+</pop>
+
+//CDP-diacylglycerol--glycerol-3-phosphate 3-phosphatidyltransferase
+g[PGS1]
+?[link](http://www.genome.jp/dbget-bin/www_bget?ec:2.7.8.5 "PGS(2.7.8.5)")
+<pop>
+
+</pop>
+
+//Phosphatidylglycerophosphatase
+g[PTPMT1]
+?[link](http://www.genome.jp/dbget-bin/www_bget?ec:3.1.3.27"PTPMT(3.1.3.27)")
+
+//cardiolipin synthase
+g[CRLS1]
+?[link](http://www.genome.jp/dbget-bin/www_bget?ec:2.7.8.41"CRLS(2.7.8.41)")
+<pop>
+Cardiolipin synthase
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=1307566&TAXID=10090&SEARCH=cardiolipin%20synthase"Crls 1(mouse)")
+</pop>
+
+//Phosphatidate phosphatase
+g[LPIN]
+?[link](http://www.genome.jp/dbget-bin/www_bget?ec:3.1.3.4"LPIN(3.1.34)")
+
+<pop>
+Protein
+?[link](http://www.uniprot.org/uniprot/Q14693"Lipin 1")
+?[link](http://www.uniprot.org/uniprot/Q92539"Lipin 2")
+<br>
+Gene
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=682899&TAXID=9606&SEARCH=LIPIN"LPIN1")
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=149540&TAXID=9606&SEARCH=LIPIN"LPIN2")
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=135114&TAXID=9606&SEARCH=LIPIN"LPIN3")
+</pop>
+
+//Cholinephosphotransferase
+g[CHPT1]
+?[link](http://www.genome.jp/dbget-bin/www_bget?ec:2.7.8.2"CHPT(2.7.8.2)")
+<pop>
+Choline phosphotransferase
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=179647&TAXID=9606&SEARCH=Cholinephosphotransferase"CHPT1")
+
+</pop>
+//Ethanolaminephosphotransferase 1
+g[CEPT1SELENOI]
+?[link](http://www.genome.jp/dbget-bin/www_bget?ec:2.7.8.1"CEPT(2.7.8.1)")
+<pop>
+Choline/ethanolamine phosphotransferase
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=196357&TAXID=9606&SEARCH=Choline%20phosphotransferase"CEPT1")
+</pop>
+
+
+//Phosphatidylserine synthase
+g[PTDSS]
+?[link](http://www.genome.jp/dbget-bin/www_bget?ec:2.7.8.8"PTDSS(2.7.8.8)")
+<pop>
+Phosphatidylserine synthase
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=179526&TAXID=9606&SEARCH=phosphatidylserine%20synthase"PTDSS1")
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=5795517&TAXID=9606&SEARCH=phosphatidylserine%20synthase%202"PTDSS2")
+</pop>
+
+//Phosphatidylserine decarboxylase
+g[PISD]
+?[link](http://www.genome.jp/dbget-bin/www_bget?ec:4.1.1.65"PISD(4.1.1.65)")
+<pop>
+Phosphatidylserine decarboxylase
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=224251"PISD")
+</pop>
+
+//CDP-diacylglycerol--inositol 3-phosphatidyltransferase
+g[CDIPT]
+?[link](http://www.genome.jp/dbget-bin/www_bget?ec:2.7.8.11"CDIPT(2.7.8.11)")
+<pop>
+CDP-diacylglycerol--inositol 3-phosphatidyltransferase
+?[link](https://www.ncbi.nlm.nih.gov/UniGene/clust.cgi?UGID=146004&TAXID=9606&SEARCH=CDIPT"CDIPT")
+</pop>
+
+//Inositol
+[Inositol] <41,37.5>
+Inositol
+u==>u[CMP]
+
+//Inositol
+[CMP] <47,37.5>
+CMP
+
+//CTP
+[CTP] <19,31>
+CTP
+d==>d[PPi]
+
+//PPi
+[PPi] <27,31>
+PPi
+
+//H2O
+[H2O] <9,39>
+H2O
+r==>r[Pi]
+
+//Pi
+[Pi] <9.5,44>
+Pi
+
+//CDP-Ethanolamine
+[CDPethanolamine] <11.5,56>
+CDP-Ethanolamine
+r==>r[CMP2]
+
+//CMP
+[CMP2] <17,60.5>
+CMP
+
+//CDP-Choline
+[CDPcholine] <15,43.5>
+CDP-Choline
+r==>l[CMP3]
+
+//CMP
+[CMP3] <27,48>
+CMP
+
+//Serine
+[Serine] <37,46>
+Ser
+l==>l[Choline]
+
+//Choline
+[Choline] <37,49>
+Choline
+
+//CMP4
+[CMP4] <68,16.5>
+CMP
+
+//CDP-DAG---CL
+[conect1] <61,16.5>
+CDP-DAG
+d=(l_w3)=r[CDP-DAG]
+u=(l_w3)=>u[CMP4]
+
+//H2O2
+[H2O2] <42,10.5>
+H2O
+d==>d[Pi2]
+
+//Pi2
+[Pi2] <46.5,10.5>
+Pi
+
+//glycerophosphate
+[glycerophosphate] <24,26.5>
+glycerophosphate
+
+r==>r[CMP5]
+
+//CMP5
+[CMP5] <29.5,22>
+CMP
